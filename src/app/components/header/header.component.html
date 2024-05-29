@@ -9,6 +9,7 @@
     </div>    
     <div class="search-bar-container">
         <i class="fas fa-search search-icon"></i>
-        <input class="search-bar" type="text" placeholder="Search horror movies..." />
+        <input *ngIf="activeTab === 'movies'" class="search-bar" type="text" placeholder="Search movies..." />
+        <input *ngIf="activeTab === 'tvshows'" class="search-bar" type="text" placeholder="Search TV shows..." />
     </div>
 </div>

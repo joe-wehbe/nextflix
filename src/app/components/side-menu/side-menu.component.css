@@ -1,9 +1,24 @@
+/************ SIDE MENU CONTAINER ************/
 .side-menu-container{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 18%;
-    height: 100%;
+    align-items: flex-start;
+    width: 13em;
+    padding-left: 1em;
+    font-family: 'Roboto Serif', serif;
     border-right: 1px solid lightgray;
+}
+
+.genre-name{
+    margin: 0.7em;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.genre-name:hover{
+    transform: scale(1.1);
+}
+
+.activeGenre {
+    color: #35D4AE;
 }

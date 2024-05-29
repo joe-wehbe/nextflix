@@ -13,6 +13,7 @@ interface Genre {
 })
 export class SideMenuComponent implements OnInit {
   genres: Genre[] = [];
+  activeGenre = 'Action';
 
   constructor(private themoviedbService:ThemoviedbService) { }
 
@@ -24,11 +25,16 @@ export class SideMenuComponent implements OnInit {
     this.themoviedbService.getGenres()
     .subscribe({
       next: (response) => {
+        console.log(response);
         this.genres = response.genres
       },
       error: (error) => {
         console.error("Error getting genres:", error);
       }
     });  
+  }
+
+  switchGenre(genre: string): void {
+    this.activeGenre = genre;
   }
 }
