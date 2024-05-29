@@ -27,11 +27,6 @@
     font-size: 22px;
 }
 
-.movies-tab, .tvshows-tab {
-    position: relative;
-    padding-bottom: 10px;
-}
-
 .movies-tab:hover, .tvshows-tab:hover {
     cursor: pointer;
     transform: scale(1.1);
