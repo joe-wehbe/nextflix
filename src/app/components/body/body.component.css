@@ -1,0 +1,10 @@
+.body-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.movies-container{
+    width: 100%;
+    margin: 1.5em;
+}
