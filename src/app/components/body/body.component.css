@@ -1,10 +1,42 @@
-.body-container{
+.body-container {
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
+    font-family: 'Roboto Serif', serif;
 }
 
-.movies-container{
+.main-container {
     width: 100%;
-    margin: 1.5em;
+    margin: 1em;
+}
+
+.movies-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 11em;
+    margin: 5px;
+}
+
+.poster-img {
+    width: 100%;
+    height: 18em;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+}
+
+.poster-img:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    transition: transform 0.3s ease-in-out;
+}
+
+.movie-title {
+    text-align: center;
 }

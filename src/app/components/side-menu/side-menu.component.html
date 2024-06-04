@@ -1,3 +1,3 @@
 <div class="side-menu-container" *ngFor="let genre of genres">
-    <p class="genre-name" [ngClass]="{'activeGenre': activeGenre === genre.name}" (click)="switchGenre(genre.name)">{{ genre.name }}</p>
+    <p class="genre-name" [ngClass]="{'activeGenre': activeGenre === genre.id}" (click)="switchGenre(genre.id)">{{ genre.name }}</p>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ThemoviedbService } from 'src/app/services/themoviedb/themoviedb.service';
 
 interface Genre {
@@ -13,19 +13,20 @@ interface Genre {
 })
 export class SideMenuComponent implements OnInit {
   genres: Genre[] = [];
-  activeGenre = 'Action';
+  activeGenre = 28;
 
-  constructor(private themoviedbService:ThemoviedbService) { }
+  @Output() genreIdEmitter = new EventEmitter<number>();
+
+  constructor(private tmdbService:ThemoviedbService) { }
 
   ngOnInit(): void {
     this.getGenres();
   }
 
   getGenres(){
-    this.themoviedbService.getGenres()
+    this.tmdbService.getGenres()
     .subscribe({
       next: (response) => {
-        console.log(response);
         this.genres = response.genres
       },
       error: (error) => {
@@ -34,7 +35,8 @@ export class SideMenuComponent implements OnInit {
     });  
   }
 
-  switchGenre(genre: string): void {
-    this.activeGenre = genre;
+  switchGenre(genreId: number): void {
+    this.activeGenre = genreId;
+    this.genreIdEmitter.emit(genreId);
   }
 }

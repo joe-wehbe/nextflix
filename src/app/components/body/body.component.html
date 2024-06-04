@@ -1,8 +1,13 @@
 <div class="body-container">
     <div class="side-menu-container">
-        <app-side-menu></app-side-menu>
+        <app-side-menu (genreIdEmitter)="onGenreSelection($event)"></app-side-menu>
     </div>
-    <div class="movies-container">
-        <p>content works!</p>
+    <div class="main-container">
+        <div class="movies-row">
+            <div class="movie" *ngFor="let movie of upcomingMovies">
+                <img class="poster-img" *ngIf="movie.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + movie.posterPath" alt="{{ movie.title }}">
+                <p class="movie-title"> {{ movie.title }}</p>
+            </div>
+        </div>
     </div>
 </div>
