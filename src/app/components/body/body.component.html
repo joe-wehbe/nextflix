@@ -15,8 +15,10 @@
                 </div>
             </div>
         </div>
-        <div class="tvshows-container" *ngIf="activeTab == 'tvshows' && upcomingMovies.length == 0">
-            Nothing here
+        <div class="movies-container" *ngIf="activeTab == 'movies' && upcomingMovies.length == 0">
+            <div class="nothing-container">
+                <p>No upcoming movies for this genre</p>
+            </div>
         </div>
         <div class="tvshows-container" *ngIf="activeTab == 'tvshows' && upcomingTvShows.length > 0">
             <div class="tvshow" *ngFor="let tvShow of upcomingTvShows">
@@ -30,7 +32,9 @@
             </div>
         </div>
         <div class="tvshows-container" *ngIf="activeTab == 'tvshows' && upcomingTvShows.length == 0">
-            Nothing here
+            <div class="nothing-container">
+                <p class="nothing-here">No upcoming TV Shows for this genre</p>
+            </div>        
         </div>
     </div>
 </div>

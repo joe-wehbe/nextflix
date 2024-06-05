@@ -15,6 +15,7 @@
 .movies-container, .tvshows-container {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
@@ -23,7 +24,8 @@
     flex-direction: column;
     align-items: center;
     width: 11em;
-    margin: 5px;
+    margin-left: 7px;
+    margin-top: 3px;
 }
 
 .poster-container {
@@ -65,4 +67,18 @@
     margin: 0;
     text-align: center;
     font-weight: bold;
+}
+
+.nothing-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    margin-top: 5em;
+}
+
+.nothing-here{
+    font-size: 25px;
+    font-style: italic;
+    color: gray;
 }
