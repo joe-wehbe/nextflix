@@ -3,10 +3,23 @@
         <app-side-menu (genreIdEmitter)="onGenreSelection($event)"></app-side-menu>
     </div>
     <div class="main-container">
-        <div class="movies-row">
+        <div class="movies-container" *ngIf="activeTab == 'movies'">
             <div class="movie" *ngFor="let movie of upcomingMovies">
-                <img class="poster-img" *ngIf="movie.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + movie.posterPath" alt="{{ movie.title }}">
+                <div class="poster-container">
+                    <img class="poster-img" *ngIf="movie.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + movie.posterPath" alt="{{ movie.title }}">
+                    <span class="release-date">Release Date <br> {{ movie.releaseDate }}</span>
+                </div>
                 <p class="movie-title"> {{ movie.title }}</p>
+            </div>
+        </div>
+
+        <div class="tvShows-container" *ngIf="activeTab == 'tvShows'">
+            <div class="tvShow" *ngFor="let tvShow of upcomingTvShows">
+                <div class="poster-container">
+                    <img class="poster-img" *ngIf="tvShow.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + tvShow.posterPath" alt="{{ tvShow.title }}">
+                    <span class="release-date">Release Date <br> {{ tvShow.releaseDate }}</span>
+                </div>
+                <p class="movie-title"> {{ tvShow.title }}</p>
             </div>
         </div>
     </div>

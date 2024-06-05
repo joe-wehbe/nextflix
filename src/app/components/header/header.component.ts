@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +7,8 @@ import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   activeTab: string = 'movies';
+
+  @Output() activeTabEmitter = new EventEmitter<string>();
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
 
@@ -17,6 +19,7 @@ export class HeaderComponent implements OnInit {
   switchTab(tab: string): void {
     this.activeTab = tab;
     this.updateIndicator();
+    this.activeTabEmitter.emit(tab);
   }
 
   updateIndicator(): void {

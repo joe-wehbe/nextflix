@@ -16,8 +16,13 @@ export class ThemoviedbService {
     return this.http.get(`${this.baseUrl}/genre/movie/list?api_key=${this.apiKey}&language=en-US`);
   }
 
-  getUpcomingMoviesByGenre(genreId: number): Observable<any> {
+  getUpcomingMovies(genreId: number): Observable<any> {
     const currentDate = new Date().toISOString().split('T')[0];
     return this.http.get(`${this.baseUrl}/discover/movie?api_key=${this.apiKey}&with_genres=${genreId}&sort_by=release_date.desc&primary_release_date.gte=${currentDate}`);
   }
+
+  getUpcomingTVShows(genreId: number): Observable<any> {
+    const currentDate = new Date().toISOString().split('T')[0];
+    return this.http.get(`${this.baseUrl}/discover/tv?api_key=${this.apiKey}&with_genres=${genreId}&sort_by=first_air_date.desc&first_air_date.gte=${currentDate}`);
+  }  
 }
