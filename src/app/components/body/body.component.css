@@ -12,13 +12,13 @@
     max-height: 85vh;
 }
 
-.movies-container {
+.movies-container, .tvshows-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.movie {
+.movie, .tvshow {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,7 +26,6 @@
     margin: 5px;
 }
 
-/* here */
 .poster-container {
     position: relative;
 }
@@ -35,16 +34,15 @@
     width: 100%;
     height: 18em;
     border-radius: 10px;
-    transition: opacity 0.3s ease; /* here */
+    transition: opacity 0.3s ease;
+    border: 0.2px solid lightgrey;
 }
 
-/* here */
 .poster-container:hover .poster-img {
     opacity: 0.2;
     cursor: pointer;
 }
 
-/* here */
 .release-date {
     visibility: hidden;
     position: absolute;
@@ -59,13 +57,12 @@
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* here */
 .poster-container:hover .release-date {
     visibility: visible;
-    opacity: 1;
 }
 
-.movie-title {
-    text-align: center;
+.movie-title, .tvshow-title {
     margin: 0;
+    text-align: center;
+    font-weight: bold;
 }

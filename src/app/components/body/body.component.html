@@ -1,26 +1,36 @@
+<app-header (activeTabEmitter)="onActiveTabSelection($event)"></app-header>
 <div class="body-container">
     <div class="side-menu-container">
         <app-side-menu (genreIdEmitter)="onGenreSelection($event)"></app-side-menu>
     </div>
     <div class="main-container">
-        <div class="movies-container" *ngIf="activeTab == 'movies'">
+        <div class="movies-container" *ngIf="activeTab == 'movies' && upcomingMovies.length > 0">
             <div class="movie" *ngFor="let movie of upcomingMovies">
                 <div class="poster-container">
                     <img class="poster-img" *ngIf="movie.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + movie.posterPath" alt="{{ movie.title }}">
-                    <span class="release-date">Release Date <br> {{ movie.releaseDate }}</span>
+                    <span class="release-date">                        
+                        <p class="movie-title"> {{ movie.title }}</p><br>
+                        Release Date <br> {{ movie.releaseDate }}
+                    </span>
                 </div>
-                <p class="movie-title"> {{ movie.title }}</p>
             </div>
         </div>
-
-        <div class="tvShows-container" *ngIf="activeTab == 'tvShows'">
-            <div class="tvShow" *ngFor="let tvShow of upcomingTvShows">
+        <div class="tvshows-container" *ngIf="activeTab == 'tvshows' && upcomingMovies.length == 0">
+            Nothing here
+        </div>
+        <div class="tvshows-container" *ngIf="activeTab == 'tvshows' && upcomingTvShows.length > 0">
+            <div class="tvshow" *ngFor="let tvShow of upcomingTvShows">
                 <div class="poster-container">
                     <img class="poster-img" *ngIf="tvShow.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + tvShow.posterPath" alt="{{ tvShow.title }}">
-                    <span class="release-date">Release Date <br> {{ tvShow.releaseDate }}</span>
+                    <span class="release-date">
+                        <p class="tvshow-title"> {{ tvShow.title }}</p><br>
+                        Release Date <br> {{ tvShow.releaseDate }}
+                    </span>
                 </div>
-                <p class="movie-title"> {{ tvShow.title }}</p>
             </div>
+        </div>
+        <div class="tvshows-container" *ngIf="activeTab == 'tvshows' && upcomingTvShows.length == 0">
+            Nothing here
         </div>
     </div>
 </div>

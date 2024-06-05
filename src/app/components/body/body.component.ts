@@ -48,10 +48,10 @@ export class BodyComponent implements OnInit {
       next: (response) => {
         console.log(response);
         this.upcomingTvShows = response.results.filter((tvShow: { poster_path: null; }) => tvShow.poster_path !== null)
-        .map((tvShow: { title: string; poster_path: string; release_date: string}) => ({
-          title: tvShow.title,
+        .map((tvShow: { name: string; poster_path: string; first_air_date: string}) => ({
+          title: tvShow.name,
           posterPath: tvShow.poster_path,
-          releaseDate: tvShow.release_date
+          releaseDate: tvShow.first_air_date
         }));
       },
       error: (error) => {
@@ -62,6 +62,11 @@ export class BodyComponent implements OnInit {
 
   onGenreSelection(genreId: number): void {
     this.genreId = genreId;
+    this.activeTab == 'movies' ? this.getUpcomingMovies(this.genreId) : this.getUpcomingTvShows(this.genreId);
+  }
+
+  onActiveTabSelection(activeTab: string) : void {
+    this.activeTab = activeTab;
     this.activeTab == 'movies' ? this.getUpcomingMovies(this.genreId) : this.getUpcomingTvShows(this.genreId);
   }
 }
