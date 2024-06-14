@@ -12,6 +12,20 @@
     max-height: 85vh;
 }
 
+.main-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.main-container::-webkit-scrollbar-track {
+    background: #dfdfdf;
+    border-radius: 10px;
+}
+
+.main-container::-webkit-scrollbar-thumb {
+    background: #35D4AE;
+    border-radius: 10px;
+}
+  
 .movies-container, .tvshows-container {
     display: flex;
     flex-direction: row;
