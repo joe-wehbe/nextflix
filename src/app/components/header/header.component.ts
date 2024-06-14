@@ -7,6 +7,7 @@ import { Component, OnInit, Renderer2, ElementRef, Output, EventEmitter } from '
 })
 export class HeaderComponent implements OnInit {
   activeTab: string = 'movies';
+  isSearchFocused: boolean = false;
 
   @Output() activeTabEmitter = new EventEmitter<string>();
 

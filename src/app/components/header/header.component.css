@@ -60,6 +60,11 @@
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
+    color: #585858;
+    transition: color 0.3s ease;
+}
+
+.search-icon-colored {
     color: #35D4AE;
 }
 
@@ -71,10 +76,7 @@
     border: 1px solid #585858;
     background-color: transparent;
     color: #EFEFEF;
-}
-
-.search-bar::placeholder {
-    color: #EFEFEF;
+    transition: border-color 0.3s ease;
 }
 
 .search-bar:focus {

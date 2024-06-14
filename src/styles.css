@@ -1,6 +1,9 @@
 body {
-    /* background: url('/assets/background.jpg') no-repeat center center fixed; */
     background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(20, 20, 20));
-    /* background-size: cover; */
 }
+
+body::-webkit-scrollbar {
+    display: none;
+}
+  
   
