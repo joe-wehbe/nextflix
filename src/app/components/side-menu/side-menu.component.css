@@ -6,7 +6,8 @@
     width: 10em;
     padding-left: 1em;
     font-family: 'Roboto Serif', serif;
-    border-right: 1px solid lightgray;
+    color: rgb(200, 200, 200);
+    border-right: 0.2px solid #585858;
 }
 
 .genre-name{

@@ -5,7 +5,8 @@
     align-items: center;
     justify-content: space-between;
     font-family: 'Roboto Serif', serif;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 0.2px solid #585858;
+    color: rgb(200, 200, 200);
 }
 
 /************** WEBSITE TITLE **************/
@@ -68,7 +69,7 @@
     padding-left: 50px;
     border-radius: 100px;
     border: 1px solid #585858;
-    background-color: #585858;
+    background-color: transparent;
     color: #EFEFEF;
 }
 

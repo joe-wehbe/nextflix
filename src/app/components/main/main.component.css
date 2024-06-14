@@ -17,7 +17,7 @@
 }
 
 .main-container::-webkit-scrollbar-track {
-    background: #dfdfdf;
+    background: #585858;
     border-radius: 10px;
 }
 
@@ -51,7 +51,7 @@
     height: 18em;
     border-radius: 10px;
     transition: opacity 0.3s ease;
-    border: 0.2px solid lightgrey;
+    border: 0.1px dotted #585858;
 }
 
 .poster-container:hover .poster-img {
@@ -70,7 +70,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #585858;
 }
 
 .poster-container:hover .release-date {
