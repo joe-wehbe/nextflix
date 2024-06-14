@@ -1,41 +1,41 @@
-<app-header (activeTabEmitter)="onActiveTabSelection($event)"></app-header>
+<app-header (activeTabEmitter)="onActiveTabSelection($event)" (searchQueryEmitter)="onSearchQuery($event)"></app-header>
 <div class="body-container">
-    <div class="side-menu-container">
-        <app-side-menu (genreIdEmitter)="onGenreSelection($event)"></app-side-menu>
+  <div class="side-menu-container">
+    <app-side-menu (genreIdEmitter)="onGenreSelection($event)"></app-side-menu>
+  </div>
+  <div class="main-container">
+    <div class="movies-container" *ngIf="activeTab == 'movies' && upcomingMovies.length > 0">
+      <div class="movie" *ngFor="let movie of upcomingMovies">
+        <div class="poster-container">
+          <img class="poster-img" *ngIf="movie.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + movie.posterPath" alt="{{ movie.title }}">
+          <span class="release-date">                        
+            <p class="movie-title"> {{ movie.title }}</p><br>
+            Release Date <br> {{ movie.releaseDate }}
+          </span>
+        </div>
+      </div>
     </div>
-    <div class="main-container">
-        <div class="movies-container" *ngIf="activeTab == 'movies' && upcomingMovies.length > 0">
-            <div class="movie" *ngFor="let movie of upcomingMovies">
-                <div class="poster-container">
-                    <img class="poster-img" *ngIf="movie.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + movie.posterPath" alt="{{ movie.title }}">
-                    <span class="release-date">                        
-                        <p class="movie-title"> {{ movie.title }}</p><br>
-                        Release Date <br> {{ movie.releaseDate }}
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="movies-container" *ngIf="activeTab == 'movies' && upcomingMovies.length == 0">
-            <div class="nothing-container">
-                <p>No upcoming movies for this genre</p>
-            </div>
-        </div>
-        <div class="tvshows-container" *ngIf="activeTab == 'tvshows' && upcomingTvShows.length > 0">
-            <div class="tvshow" *ngFor="let tvShow of upcomingTvShows">
-                <div class="poster-container">
-                    <img class="poster-img" *ngIf="tvShow.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + tvShow.posterPath" alt="{{ tvShow.title }}">
-                    <span class="release-date">
-                        <p class="tvshow-title"> {{ tvShow.title }}</p><br>
-                        Release Date <br> {{ tvShow.releaseDate }}
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="tvshows-container" *ngIf="activeTab == 'tvshows' && upcomingTvShows.length == 0">
-            <div class="nothing-container">
-                <p class="nothing-here">No upcoming TV Shows for this genre</p>
-            </div>        
-        </div>
+    <div class="movies-container" *ngIf="activeTab == 'movies' && upcomingMovies.length == 0">
+      <div class="nothing-container">
+        <p>No upcoming movies for this genre</p>
+      </div>
     </div>
+    <div class="tvshows-container" *ngIf="activeTab == 'tvshows' && upcomingTvShows.length > 0">
+      <div class="tvshow" *ngFor="let tvShow of upcomingTvShows">
+        <div class="poster-container">
+          <img class="poster-img" *ngIf="tvShow.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + tvShow.posterPath" alt="{{ tvShow.title }}">
+          <span class="release-date">
+            <p class="tvshow-title"> {{ tvShow.title }}</p><br>
+            Release Date <br> {{ tvShow.releaseDate }}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="tvshows-container" *ngIf="activeTab == 'tvshows' && upcomingTvShows.length == 0">
+      <div class="nothing-container">
+        <p class="nothing-here">No upcoming TV Shows for this genre</p>
+      </div>        
+    </div>
+  </div>
 </div>
 <app-footer></app-footer>

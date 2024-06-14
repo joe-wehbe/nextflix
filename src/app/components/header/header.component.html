@@ -1,15 +1,16 @@
 <div class="header-container">
     <div class="website-title">
-        <p class="title">NextFlix</p>
+      <p class="title">NextFlix</p>
     </div>
     <div class="tabs-container">
-        <p class="movies-tab" [ngClass]="{'active': activeTab === 'movies'}" (click)="switchTab('movies')">Movies</p>
-        <p class="tvshows-tab" [ngClass]="{'active': activeTab === 'tvshows'}" (click)="switchTab('tvshows')">TV Shows</p>   
-        <div class="tab-indicator"></div>
+      <p class="movies-tab" [ngClass]="{'active': activeTab === 'movies'}" (click)="switchTab('movies')">Movies</p>
+      <p class="tvshows-tab" [ngClass]="{'active': activeTab === 'tvshows'}" (click)="switchTab('tvshows')">TV Shows</p>   
+      <div class="tab-indicator"></div>
     </div>    
     <div class="search-bar-container">
-        <i class="fas fa-search search-icon" [ngClass]="{'search-icon-colored': isSearchFocused}"></i>
-        <input *ngIf="activeTab === 'movies'" class="search-bar" type="text" placeholder="Search movies..." (focus)="isSearchFocused = true" (blur)="isSearchFocused = false" />
-        <input *ngIf="activeTab === 'tvshows'" class="search-bar" type="text" placeholder="Search TV shows..." (focus)="isSearchFocused = true" (blur)="isSearchFocused = false" />
+      <i class="fas fa-search search-icon" [ngClass]="{'search-icon-colored': isSearchFocused}"></i>
+      <input *ngIf="activeTab === 'movies'" class="search-bar" type="text" placeholder="Search movies..." (focus)="isSearchFocused = true" (blur)="isSearchFocused = false" (input)="onSearch($event)" />
+      <input *ngIf="activeTab === 'tvshows'" class="search-bar" type="text" placeholder="Search TV shows..." (focus)="isSearchFocused = true" (blur)="isSearchFocused = false" (input)="onSearch($event)" />
     </div>
 </div>
+  

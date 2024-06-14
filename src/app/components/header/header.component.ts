@@ -8,8 +8,10 @@ import { Component, OnInit, Renderer2, ElementRef, Output, EventEmitter } from '
 export class HeaderComponent implements OnInit {
   activeTab: string = 'movies';
   isSearchFocused: boolean = false;
+  searchQuery: string = '';
 
   @Output() activeTabEmitter = new EventEmitter<string>();
+  @Output() searchQueryEmitter = new EventEmitter<string>();
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
 
@@ -37,5 +39,11 @@ export class HeaderComponent implements OnInit {
       this.renderer.setStyle(indicator, 'left', `${left}px`);
       this.renderer.setStyle(indicator, 'width', `${width}px`);
     }
+  }
+
+  onSearch(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    this.searchQuery = inputElement.value;
+    this.searchQueryEmitter.emit(this.searchQuery);
   }
 }
