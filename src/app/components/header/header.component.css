@@ -12,7 +12,7 @@
 /************** WEBSITE TITLE **************/
 .title {
     margin: 0;
-    padding-left: 0.1em;
+    padding-left: 0.5em;
     font-size: 50px;
     color: #35D4AE;
 }
@@ -73,9 +73,9 @@
     padding: 15px;
     padding-left: 50px;
     border-radius: 100px;
-    border: 1px solid #585858;
+    border: 1px solid rgb(200, 200, 200);
     background-color: transparent;
-    color: #EFEFEF;
+    color: rgb(200, 200, 200);
     transition: border-color 0.3s ease;
 }
 
