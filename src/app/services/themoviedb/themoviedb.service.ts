@@ -25,4 +25,8 @@ export class ThemoviedbService {
     const currentDate = new Date().toISOString().split('T')[0];
     return this.http.get(`${this.baseUrl}/discover/tv?api_key=${this.apiKey}&with_genres=${genreId}&sort_by=first_air_date.desc&first_air_date.gte=${currentDate}`);
   }  
+
+  getMovieDetails(movieId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/movie/${movieId}?api_key=${this.apiKey}&append_to_response=credits`);
+  }
 }
