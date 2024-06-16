@@ -3,7 +3,9 @@
   <div class="side-menu-container">
     <app-side-menu (genreIdEmitter)="onGenreSelection($event)"></app-side-menu>
   </div>
-  <div class="main-container" *ngIf="selectedMovieId == -1">
+  <!-- NO MOVIE/TVSHOW SELECTED -->
+  <div class="main-container" *ngIf="selectedMovieId == -1 && selectedTvShowId == -1">
+    <!-- movies -->
     <div class="movies-container" *ngIf="activeTab == 'movies' && upcomingMovies.length > 0">
       <div class="movie" *ngFor="let movie of upcomingMovies">
         <div class="poster-container" (click)="selectMovie(movie.id)">
@@ -20,13 +22,14 @@
         <p>No upcoming movies for this genre</p>
       </div>
     </div>
+    <!-- tvshows -->
     <div class="tvshows-container" *ngIf="activeTab == 'tvshows' && upcomingTvShows.length > 0">
       <div class="tvshow" *ngFor="let tvShow of upcomingTvShows">
-        <div class="poster-container" (click)="selectMovie(tvShow.id)">
-          <img class="poster-img" *ngIf="tvShow.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + tvShow.posterPath" alt="{{ tvShow.title }}">
+        <div class="poster-container" (click)="selectTVShow(tvShow.id)">
+          <img class="poster-img" *ngIf="tvShow.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + tvShow.posterPath" alt="{{ tvShow.name }}">
           <span class="release-date">
-            <p class="tvshow-title"> {{ tvShow.title }}</p><br>
-            Release Date <br> {{ tvShow.releaseDate }}
+            <p class="tvshow-title"> {{ tvShow.name }}</p><br>
+            First Air Date <br> {{ tvShow.firstAirDate }}
           </span>
         </div>
       </div>
@@ -37,11 +40,20 @@
       </div>        
     </div>
   </div>
-  <div class="main-container" *ngIf="selectedMovieId != -1">
+  <!-- MOVIE/TVSHOW SELECTED -->
+  <div class="main-container" *ngIf="selectedMovieId != -1 || selectedTvShowId != -1">
     <div class="back-button-container">
-      <button class="back-button" (click)="unselectMovie()">
+      <button class="back-button" (click)="back()">
         <i class="fas fa-arrow-left"></i>
       </button>
+      <!-- <p class="details">
+        {{selectedMovie.title}} <br>
+        {{selectedMovie.releaseDate}}<br>
+        {{selectedMovie.posterPath}}<br>
+        {{selectedMovie.genres}}<br>
+        {{selectedMovie.overview}}<br>
+        {{selectedMovie.cast}}<br>
+      </p> -->
     </div>
   </div>
 </div>

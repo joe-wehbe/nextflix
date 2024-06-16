@@ -6,7 +6,7 @@
     font-family: 'Roboto Serif', serif;
 }
 
-/************** NO MOVIE SELECTED **************/
+/************** NO MOVIE/TVSHOW SELECTED **************/
 .main-container {
     width: 100%;
     margin: 1em;
@@ -100,7 +100,7 @@
     color: gray;
 }
 
-/************** MOVIE SELECTED **************/
+/************** MOVIE/TVSHOW SELECTED **************/
 .back-button{
     width: 4em;
     height: 4em;
@@ -117,3 +117,7 @@
     font-size: 20px;
     color: #35D4AE;
 }
+
+/* .details{
+    color: white;
+} */
