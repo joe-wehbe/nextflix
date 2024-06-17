@@ -119,7 +119,7 @@ export class MainComponent implements OnInit {
             posterPath: tvShow.poster_path
           }));
         if (this.searchQuery) {
-          tvShows = tvShows.filter((tvShow: { title: string; }) => tvShow.title.toLowerCase().includes(this.searchQuery.toLowerCase()));
+          tvShows = tvShows.filter((tvShow: { name: string; }) => tvShow.name.toLowerCase().includes(this.searchQuery.toLowerCase()));
         }
         this.upcomingTvShows = tvShows;
       },
@@ -157,19 +157,19 @@ export class MainComponent implements OnInit {
 
   /******************** OTHER FUNCTIONS ********************/
   onActiveTabSelection(activeTab: string) : void {
-    this.selectedMovieId = -1;
+    this.back();
     this.activeTab = activeTab;
     this.activeTab == 'movies' ? this.getUpcomingMovies(this.genreId) : this.getUpcomingTVShows(this.genreId);
   }
 
   onGenreSelection(genreId: number): void {
-    this.selectedMovieId = -1;
+    this.back();
     this.genreId = genreId;
     this.activeTab == 'movies' ? this.getUpcomingMovies(this.genreId) : this.getUpcomingTVShows(this.genreId);
   }
 
   onSearchQuery(query: string): void {
-    this.selectedMovieId = -1;
+    this.back();
     this.searchQuery = query;
     this.activeTab === 'movies' ? this.getUpcomingMovies(this.genreId) : this.getUpcomingTVShows(this.genreId);
   }

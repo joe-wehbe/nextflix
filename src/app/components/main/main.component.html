@@ -47,6 +47,7 @@
         <i class="fas fa-arrow-left"></i>
       </button>
     </div>
+    <!-- movie -->
     <div class="movie-details-container">
       <div class="upper-container">
         <div class="left-block">
@@ -74,6 +75,18 @@
         </div>
       </div>
       <div class="lower-container">
+        <p class="more-movies">More upcoming {{ genreId }} {{ activeTab }}</p>
+        <div class="movies-container" *ngIf="activeTab == 'movies' && upcomingMovies.length > 0">
+          <div class="movie" *ngFor="let movie of upcomingMovies.slice(0, 7)">
+            <div class="poster-container" (click)="selectMovie(movie.id)" [ngClass]="{'selected-movie': movie.id === selectedMovieId}">
+              <img class="poster-img" *ngIf="movie.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + movie.posterPath" alt="{{ movie.title }}">
+              <span class="movie-info">                        
+                <p class="movie-title">{{ movie.title }}</p><br>
+                Release Date <br> {{ movie.releaseDate }}
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

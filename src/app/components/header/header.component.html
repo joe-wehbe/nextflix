@@ -9,8 +9,7 @@
     </div>    
     <div class="search-bar-container">
       <i class="fas fa-search search-icon" [ngClass]="{'search-icon-colored': isSearchFocused}"></i>
-      <input *ngIf="activeTab === 'movies'" class="search-bar" type="text" placeholder="Search movies..." (focus)="isSearchFocused = true" (blur)="isSearchFocused = false" (input)="onSearch($event)" />
-      <input *ngIf="activeTab === 'tvshows'" class="search-bar" type="text" placeholder="Search TV shows..." (focus)="isSearchFocused = true" (blur)="isSearchFocused = false" (input)="onSearch($event)" />
+      <input class="search-bar" type="text" placeholder="Search {{ activeTab }}..." (focus)="isSearchFocused = true" (blur)="isSearchFocused = false" (input)="onSearch($event)" />
     </div>
 </div>
   
