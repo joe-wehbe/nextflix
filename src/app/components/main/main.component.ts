@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemoviedbService } from 'src/app/services/themoviedb/themoviedb.service';
+import { DatePipe } from '@angular/common';
 
 interface Movie{
   id: number;
@@ -24,7 +25,8 @@ interface TvShow{
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
+  providers: [DatePipe]
 })
 export class MainComponent implements OnInit {
   /***** MOVIEs VARIABLES *****/
@@ -42,7 +44,7 @@ export class MainComponent implements OnInit {
   genreId = 28;
   searchQuery: string = '';
 
-  constructor(private tmdbService: ThemoviedbService) { }
+  constructor(private tmdbService: ThemoviedbService, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
     this.getUpcomingMovies(this.genreId);
@@ -58,7 +60,7 @@ export class MainComponent implements OnInit {
           .map((movie: { id: number; title: string; poster_path: string; release_date: string }) => ({
             id: movie.id,
             title: movie.title,
-            releaseDate: movie.release_date,
+            releaseDate: this.datePipe.transform(movie.release_date, 'MMMM d, y') ?? '',
             posterPath: movie.poster_path
           }));
         if (this.searchQuery) {
@@ -80,9 +82,9 @@ export class MainComponent implements OnInit {
         this.selectedMovie = {
           id: response.id,
           title: response.title,
-          releaseDate: response.release_date,
+          releaseDate: this.datePipe.transform(response.release_date, 'MMMM d, y') ?? '',
           posterPath: response.poster_path,
-          genres: response.genres,
+          genres: response.genres.map((genre: any) => genre.name).join(' | '),
           overview: response.overview,
           cast: response.credits.cast
         };
@@ -108,7 +110,7 @@ export class MainComponent implements OnInit {
           .map((tvShow: { id: number; name: string; poster_path: string; first_air_date: string }) => ({
             id: tvShow.id,
             name: tvShow.name,
-            firstAirDate: tvShow.first_air_date,
+            firstAirDate: this.datePipe.transform(tvShow.first_air_date, 'MMMM d, y') ?? '',
             posterPath: tvShow.poster_path
           }));
         if (this.searchQuery) {

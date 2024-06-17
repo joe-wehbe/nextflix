@@ -10,7 +10,7 @@
       <div class="movie" *ngFor="let movie of upcomingMovies">
         <div class="poster-container" (click)="selectMovie(movie.id)">
           <img class="poster-img" *ngIf="movie.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + movie.posterPath" alt="{{ movie.title }}">
-          <span class="release-date">                        
+          <span class="movie-info">                        
             <p class="movie-title"> {{ movie.title }}</p><br>
             Release Date <br> {{ movie.releaseDate }}
           </span>
@@ -27,7 +27,7 @@
       <div class="tvshow" *ngFor="let tvShow of upcomingTvShows">
         <div class="poster-container" (click)="selectTVShow(tvShow.id)">
           <img class="poster-img" *ngIf="tvShow.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + tvShow.posterPath" alt="{{ tvShow.name }}">
-          <span class="release-date">
+          <span class="tvshow-info">
             <p class="tvshow-title"> {{ tvShow.name }}</p><br>
             First Air Date <br> {{ tvShow.firstAirDate }}
           </span>
@@ -46,15 +46,38 @@
       <button class="back-button" (click)="back()">
         <i class="fas fa-arrow-left"></i>
       </button>
-      <!-- <p class="details">
-        {{selectedMovie.title}} <br>
-        {{selectedMovie.releaseDate}}<br>
-        {{selectedMovie.posterPath}}<br>
-        {{selectedMovie.genres}}<br>
-        {{selectedMovie.overview}}<br>
-        {{selectedMovie.cast}}<br>
-      </p> -->
+    </div>
+    <div class="movie-details-container">
+      <div class="upper-container">
+        <div class="left-block">
+          <div class="tgr-container">
+            <div class="title-genres-container">
+              <p class="title"> {{ selectedMovie.title }}</p>
+              <p class="genres"> {{ selectedMovie.genres }} </p>
+            </div>
+            <div class="seperator1"></div>
+            <div class="release-date-container">
+              <p class="release-date"> {{ selectedMovie.releaseDate }} </p>
+            </div>
+          </div>
+          <div class="overview-container">
+            <p class="overview"> {{ selectedMovie.overview }} </p>
+          </div>
+        </div>
+        <div class="seperator2"></div>
+        <div class="right-block">
+          <div class="cast-container">
+          </div>
+        </div>
+      </div>
+      <div class="lower-container">
+      </div>
     </div>
   </div>
 </div>
 <app-footer></app-footer>
+    <!-- <p class="details">
+      {{selectedMovie.posterPath}}<br>
+      {{selectedMovie.genres}}<br>
+      {{selectedMovie.cast}}<br>
+    </p> -->

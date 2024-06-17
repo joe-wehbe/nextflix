@@ -61,7 +61,7 @@
     cursor: pointer;
 }
 
-.release-date {
+.movie-info, .tvshow-info {
     visibility: hidden;
     position: absolute;
     text-align: center;
@@ -75,7 +75,8 @@
     background: linear-gradient(to bottom, rgb(53,212,174), rgb(161, 207, 195));
 }
 
-.poster-container:hover .release-date {
+.poster-container:hover .movie-info,  
+.poster-container:hover .tvshow-info{
     visibility: visible;
 }
 
@@ -118,6 +119,73 @@
     color: #35D4AE;
 }
 
-/* .details{
+.movie-details-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
     color: white;
-} */
+}
+
+.upper-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.left-block{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 65%;
+}
+
+.tgr-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.title-genres-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+    margin: 0;
+    font-size: 70px;
+}
+
+.genres{
+    margin: 0;
+    color: #909090;
+    font-size: 20px;
+}
+
+.seperator1{
+    margin-left: 2em;
+    margin-right: 2em;
+    height: 8em;
+    width: 0.2px;
+    background-color: #585858;
+}
+
+.release-date{
+    font-size: 30px;
+}
+
+.seperator2{
+    margin-left: 2em;
+    margin-right: 2em;
+    height: 20em;
+    width: 0.2px;
+    background-color: #585858;
+}
