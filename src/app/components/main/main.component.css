@@ -119,7 +119,7 @@
     color: #35D4AE;
 }
 
-.movie-details-container{
+.movie-details-container, .tvshow-details-container{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -219,12 +219,12 @@
     margin-top: 2em;
 }
 
-.more-movies{
+.more-movies, .more-tvshows{
     font-size: 20px;
     font-style: italic;
 }
 
-.selected-movie {
+.selected-movie, .selected-tvshow {
     margin-top: -20px;
     transition: margin-top 0.3s ease;
 }

@@ -19,7 +19,7 @@ interface TvShow{
   posterPath: string;
   genres: string[];
   overview: string;
-  cast: string[];
+  cast: Actor[];
 }
 
 interface Actor {
@@ -47,6 +47,7 @@ export class MainComponent implements OnInit {
   /***** OTHER VARIABLES *****/
   activeTab: String = 'movies';
   genreId = 28;
+  genreName: string = '';
   searchQuery: string = '';
 
   constructor(private tmdbService: ThemoviedbService, private datePipe: DatePipe) { }
@@ -137,11 +138,11 @@ export class MainComponent implements OnInit {
         this.selectedTvShow = {
           id: response.id,
           name: response.name,
-          firstAirDate: response.first_air_date,
+          firstAirDate: this.datePipe.transform(response.first_air_date, 'MMMM d, y') ?? '',
           posterPath: response.poster_path,
-          genres: response.genres,
+          genres: response.genres.map((genre: any) => genre.name).join(' | '),
           overview: response.overview,
-          cast: response.credits.cast
+          cast: response.credits.cast.slice(0, 12).map((cast: any) => ({name: cast.name, profilePath: cast.profile_path}))        
         };
       },
       error: (error) => {
@@ -156,6 +157,19 @@ export class MainComponent implements OnInit {
   }
 
   /******************** OTHER FUNCTIONS ********************/
+  getGenreById(genreId: number){
+    this.tmdbService.getGenreById(genreId)
+    .subscribe({
+      next: (response: any) => {
+        console.log(response);
+        this.genreName = response.name;
+      },
+      error: (error) => {
+        console.error("Error getting genre:", error);
+      }
+    });
+  }
+
   onActiveTabSelection(activeTab: string) : void {
     this.back();
     this.activeTab = activeTab;
@@ -165,6 +179,7 @@ export class MainComponent implements OnInit {
   onGenreSelection(genreId: number): void {
     this.back();
     this.genreId = genreId;
+    this.getGenreById(this.genreId);
     this.activeTab == 'movies' ? this.getUpcomingMovies(this.genreId) : this.getUpcomingTVShows(this.genreId);
   }
 

@@ -36,4 +36,8 @@ export class ThemoviedbService {
   getGenres(): Observable<any> {
     return this.http.get(`${this.baseUrl}/genre/movie/list?api_key=${this.apiKey}&language=en-US`);
   }  
+
+  getGenreById(genreId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/genre/${genreId}?api_key=${this.apiKey}`);
+  }
 }

@@ -23,7 +23,7 @@
       </div>
     </div>
     <!-- tvshows -->
-    <div class="tvshows-container" *ngIf="activeTab == 'tvshows' && upcomingTvShows.length > 0">
+    <div class="tvshows-container" *ngIf="activeTab == 'TV shows' && upcomingTvShows.length > 0">
       <div class="tvshow" *ngFor="let tvShow of upcomingTvShows">
         <div class="poster-container" (click)="selectTVShow(tvShow.id)">
           <img class="poster-img" *ngIf="tvShow.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + tvShow.posterPath" alt="{{ tvShow.name }}">
@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div class="tvshows-container" *ngIf="activeTab == 'tvshows' && upcomingTvShows.length == 0">
+    <div class="tvshows-container" *ngIf="activeTab == 'TV shows' && upcomingTvShows.length == 0">
       <div class="nothing-container">
         <p class="nothing-here">No upcoming TV Shows for this genre</p>
       </div>        
@@ -48,7 +48,7 @@
       </button>
     </div>
     <!-- movie -->
-    <div class="movie-details-container">
+    <div class="movie-details-container" *ngIf="activeTab == 'movies'">
       <div class="upper-container">
         <div class="left-block">
           <div class="tgr-container">
@@ -75,7 +75,7 @@
         </div>
       </div>
       <div class="lower-container">
-        <p class="more-movies">More upcoming {{ genreId }} {{ activeTab }}</p>
+        <p class="more-movies">More upcoming {{ genreName.toLowerCase() }} {{ activeTab }}</p>
         <div class="movies-container" *ngIf="activeTab == 'movies' && upcomingMovies.length > 0">
           <div class="movie" *ngFor="let movie of upcomingMovies.slice(0, 7)">
             <div class="poster-container" (click)="selectMovie(movie.id)" [ngClass]="{'selected-movie': movie.id === selectedMovieId}">
@@ -89,9 +89,48 @@
         </div>
       </div>
     </div>
+    <!-- tvshow -->
+    <div class="tvshow-details-container" *ngIf="activeTab == 'TV shows'">
+      <div class="upper-container">
+        <div class="left-block">
+          <div class="tgr-container">
+            <div class="title-genres-container">
+              <p class="title"> {{ selectedTvShow.name }}</p>
+              <p class="genres"> {{ selectedTvShow.genres }} </p>
+            </div>
+            <div class="seperator1"></div>
+            <div class="release-date-container">
+              <p class="release-date"> {{ selectedTvShow.firstAirDate }} </p>
+            </div>
+          </div>
+          <div class="overview-container">
+            <p class="overview"> {{ selectedTvShow.overview }} </p>
+          </div>
+        </div>
+        <div class="seperator2"></div>
+        <div class="right-block">
+          <div class="cast-container">
+            <div *ngFor="let actor of selectedTvShow.cast">
+              <img class="actor-picture" *ngIf="actor.profilePath" [src]="'https://image.tmdb.org/t/p/w500' + actor.profilePath" alt="{{ actor.name }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lower-container">
+        <p class="more-tvshows">More upcoming {{ genreName.toLowerCase() }} {{ activeTab }}</p>
+        <div class="tvshows-container" *ngIf="activeTab == 'TV shows' && upcomingTvShows.length > 0">
+          <div class="tvshow" *ngFor="let tvShow of upcomingTvShows.slice(0, 7)">
+            <div class="poster-container" (click)="selectTVShow(tvShow.id)" [ngClass]="{'selected-tvshow': tvShow.id === selectedTvShowId}">
+              <img class="poster-img" *ngIf="tvShow.posterPath != null" [src]="'https://image.tmdb.org/t/p/w500' + tvShow.posterPath" alt="{{ tvShow.name }}">
+              <span class="tvshow-info">
+                <p class="tvshow-title"> {{ tvShow.name }}</p><br>
+                First Air Date <br> {{ tvShow.firstAirDate }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>
-    <!-- <p class="details">
-      {{selectedMovie.posterPath}}<br>
-    </p> -->

@@ -27,8 +27,10 @@ export class HeaderComponent implements OnInit {
 
   updateIndicator(): void {
     const indicator = this.elementRef.nativeElement.querySelector('.tab-indicator');
-    const activeTabElement = this.elementRef.nativeElement.querySelector(`.${this.activeTab}-tab`);
-
+    const cleanedActiveTab = this.activeTab.replace(/\s/g, '').toLowerCase();
+    const activeTabElement = this.elementRef.nativeElement.querySelector(`.${cleanedActiveTab}-tab`);
+    
+    console.log(activeTabElement)
     if (activeTabElement) {
       const tabRect = activeTabElement.getBoundingClientRect();
       const containerRect = this.elementRef.nativeElement.querySelector('.tabs-container').getBoundingClientRect();
