@@ -9,7 +9,7 @@ interface Movie{
   posterPath: string;
   genres: string[];
   overview: string;
-  cast: string[];
+  cast: Actor[];
 }
 
 interface TvShow{
@@ -20,6 +20,11 @@ interface TvShow{
   genres: string[];
   overview: string;
   cast: string[];
+}
+
+interface Actor {
+  name: string;
+  profilePath: string;
 }
 
 @Component({
@@ -86,14 +91,14 @@ export class MainComponent implements OnInit {
           posterPath: response.poster_path,
           genres: response.genres.map((genre: any) => genre.name).join(' | '),
           overview: response.overview,
-          cast: response.credits.cast
+          cast: response.credits.cast.slice(0, 12).map((cast: any) => ({name: cast.name, profilePath: cast.profile_path}))        
         };
       },
       error: (error) => {
         console.error("Error getting movie details:", error);
       }
     });
-  }
+  }  
 
   selectMovie(id: number){
     this.selectedMovieId = id;

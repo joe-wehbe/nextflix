@@ -189,3 +189,22 @@
     width: 0.2px;
     background-color: #585858;
 }
+
+.right-block{
+    width: 35%;
+}
+
+.cast-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.actor-picture {
+    width: 90px;
+    height: 90px;
+    margin: 2px;
+    border-radius: 100px;
+    cursor: pointer;
+}

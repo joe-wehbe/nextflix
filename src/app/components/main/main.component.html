@@ -67,6 +67,9 @@
         <div class="seperator2"></div>
         <div class="right-block">
           <div class="cast-container">
+            <div *ngFor="let actor of selectedMovie.cast">
+              <img class="actor-picture" *ngIf="actor.profilePath" [src]="'https://image.tmdb.org/t/p/w500' + actor.profilePath" alt="{{ actor.name }}" />
+            </div>
           </div>
         </div>
       </div>
@@ -78,6 +81,4 @@
 <app-footer></app-footer>
     <!-- <p class="details">
       {{selectedMovie.posterPath}}<br>
-      {{selectedMovie.genres}}<br>
-      {{selectedMovie.cast}}<br>
     </p> -->
