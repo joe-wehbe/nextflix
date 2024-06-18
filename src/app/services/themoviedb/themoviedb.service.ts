@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.local';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemoviedbService {
 
-  private apiKey = '8bea005cac9c4977ed3b41acad3136ef';
+  private apiKey = environment.apiKey;
   private baseUrl = 'https://api.themoviedb.org/3';
 
   constructor(private http: HttpClient) { }
