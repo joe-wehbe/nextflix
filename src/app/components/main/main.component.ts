@@ -34,7 +34,7 @@ interface Actor {
   providers: [DatePipe]
 })
 export class MainComponent implements OnInit {
-  /***** MOVIEs VARIABLES *****/
+  /***** MOVIES VARIABLES *****/
   upcomingMovies: Movie[] = [];
   selectedMovieId: number = -1;
   selectedMovie!: Movie;
@@ -49,6 +49,7 @@ export class MainComponent implements OnInit {
   genreId = 28;
   genreName: string = '';
   searchQuery: string = '';
+  hasProfilePath: Boolean = false;
 
   constructor(private tmdbService: ThemoviedbService, private datePipe: DatePipe) { }
 
@@ -92,7 +93,7 @@ export class MainComponent implements OnInit {
           posterPath: response.poster_path,
           genres: response.genres.map((genre: any) => genre.name).join(' | '),
           overview: response.overview,
-          cast: response.credits.cast.slice(0, 12).map((cast: any) => ({name: cast.name, profilePath: cast.profile_path}))        
+          cast: response.credits.cast.slice(0, 12).map((cast: any) => ({name: cast.name, profilePath: cast.profile_path}))      
         };
       },
       error: (error) => {
@@ -104,6 +105,10 @@ export class MainComponent implements OnInit {
   selectMovie(id: number){
     this.selectedMovieId = id;
     this.getMovieDetails(this.selectedMovieId);
+  }
+
+  movieHasProfilePaths(): boolean {
+    return this.selectedMovie?.cast?.some((actor: Actor) => actor.profilePath) ?? false;
   }
 
   /******************** TV SHOWS FUNCTIONS ********************/
@@ -156,6 +161,10 @@ export class MainComponent implements OnInit {
     this.getTvShowDetails(this.selectedTvShowId);
   }
 
+  tvShowHasProfilePaths(): boolean {
+    return this.selectedTvShow?.cast?.some((actor: Actor) => actor.profilePath) ?? false;
+  } 
+
   /******************** OTHER FUNCTIONS ********************/
   getGenreById(genreId: number){
     this.tmdbService.getGenreById(genreId)
@@ -188,7 +197,7 @@ export class MainComponent implements OnInit {
     this.searchQuery = query;
     this.activeTab === 'movies' ? this.getUpcomingMovies(this.genreId) : this.getUpcomingTVShows(this.genreId);
   }
-
+   
   back(){
     this.selectedMovieId = -1;
     this.selectedTvShowId = -1;

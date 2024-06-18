@@ -69,7 +69,7 @@
             <p class="overview"> {{ selectedMovie.overview }} </p>
           </div>
         </div>
-        <div class="seperator2"></div>
+        <div class="seperator2" *ngIf="movieHasProfilePaths()"></div>
         <div class="right-block">
           <div class="cast-container">
             <div *ngFor="let actor of selectedMovie.cast">
@@ -111,7 +111,7 @@
             <p class="overview"> {{ selectedTvShow.overview }} </p>
           </div>
         </div>
-        <div class="seperator2"></div>
+        <div class="seperator2" *ngIf="tvShowHasProfilePaths()"></div>
         <div class="right-block">
           <div class="cast-container">
             <div *ngFor="let actor of selectedTvShow.cast">
