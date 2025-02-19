@@ -1,4 +1,4 @@
-![image](https://github.com/joe-wehbe/nextflix/assets/102875229/18fc6a80-6269-4c81-bff0-fac27f5bb482)
+![340656934-18fc6a80-6269-4c81-bff0-fac27f5bb482](https://github.com/joe-wehbe/nextflix/assets/102875229/506badd2-b010-4483-9519-dfc621862464)
 
 # Description
 NextFlix provides a comprehensive and user-friendly platform to explore upcoming movie and TV show releases across various genres.
