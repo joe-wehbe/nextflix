@@ -1,4 +1,4 @@
-<div class="background-container" [style.backgroundImage]="'url(https://image.tmdb.org/t/p/original' + (selectedMovie?.posterPath || selectedTvShow?.posterPath) + ')'"
+<div class="background-container" [style.backgroundImage]="'url(https://image.tmdb.org/t/p/original' + (selectedMovie.posterPath || selectedTvShow.posterPath) + ')'"
      *ngIf="selectedMovieId !== -1 || selectedTvShowId !== -1">
 </div>
 
