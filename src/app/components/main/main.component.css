@@ -123,8 +123,9 @@
     border: 1px solid #35D4AE;
 }
 
-.back-button:active{
-    opacity: 0.3;
+.back-button:hover{
+    opacity: 0.8;
+    cursor: pointer;
 }
 
 .fa-arrow-left{
